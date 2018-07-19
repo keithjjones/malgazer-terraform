@@ -6,11 +6,12 @@ apt-get install -y \
   gcc \
   git \
   tk \
-  python-tk \
+  python3-tk \
   libfftw3-dev \
   libhdf5-serial-dev \
   libmagic-dev \
-  curl
+  curl \
+  cifs-utils
 
 # Get the source code...
 mkdir -p /Source
@@ -20,7 +21,9 @@ cd malgazer
 pip3 install -r requirements.txt
 
 # Copy the data over...
-# mkdir /mnt/data
+# mkdir -p /mnt/data
+# chown -R kjones:kjones /mnt/data
+# chown -R kjones:kjones /mnt/virustotal
 # cd /mnt/data
 # cp -R /mnt/virustotal/RWE .
 # cp -R /mnt/virustotal/GIST .

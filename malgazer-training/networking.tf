@@ -14,14 +14,6 @@ resource "azurerm_subnet" "malgazer_training_subnet" {
 }
 
 
-resource "azurerm_public_ip" "malgazer_training_public_ip" {
-    name                         = "malgazer_training_public_ip"
-    location                     = "${var.region}"
-    resource_group_name          = "${azurerm_resource_group.malgazer_training_rg.name}"
-    public_ip_address_allocation = "dynamic"
-}
-
-
 resource "azurerm_network_security_group" "malgazer_training_nsg" {
   name                = "malgazer_training_nsg"
   location            = "${var.region}"
@@ -50,19 +42,4 @@ resource "azurerm_network_security_group" "malgazer_training_nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-}
-
-
-resource "azurerm_network_interface" "malgazer_training_nic" {
-    name                      = "malgazer_training_nic"
-    location                  = "${var.region}"
-    resource_group_name       = "${azurerm_resource_group.malgazer_training_rg.name}"
-    network_security_group_id = "${azurerm_network_security_group.malgazer_training_nsg.id}"
-
-    ip_configuration {
-        name                          = "malgazer_training_nic_configuration"
-        subnet_id                     = "${azurerm_subnet.malgazer_training_subnet.id}"
-        private_ip_address_allocation = "dynamic"
-        public_ip_address_id          = "${azurerm_public_ip.malgazer_training_public_ip.id}"
-    }
 }

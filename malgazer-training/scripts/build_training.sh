@@ -18,6 +18,7 @@ mkdir -p /Source
 cd /Source
 git clone https://github.com/keithjjones/malgazer.git
 cd malgazer
+chown -R kjones:kjones /Source
 pip3 install -r requirements.txt
 
 # Copy the data over...

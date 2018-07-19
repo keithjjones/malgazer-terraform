@@ -1,7 +1,7 @@
 resource "azurerm_virtual_network" "malgazer_training_virtual_network" {
   name                = "malgazer_training_virtual_network"
   address_space       = ["10.0.0.0/16"]
-  location            = "eastus"
+  location            = "${var.region}"
   resource_group_name = "${azurerm_resource_group.malgazer_training_rg.name}"
 }
 
@@ -16,7 +16,7 @@ resource "azurerm_subnet" "malgazer_training_subnet" {
 
 resource "azurerm_public_ip" "malgazer_training_public_ip" {
     name                         = "malgazer_training_public_ip"
-    location                     = "eastus"
+    location                     = "${var.region}"
     resource_group_name          = "${azurerm_resource_group.malgazer_training_rg.name}"
     public_ip_address_allocation = "dynamic"
 }
@@ -24,7 +24,7 @@ resource "azurerm_public_ip" "malgazer_training_public_ip" {
 
 resource "azurerm_network_security_group" "malgazer_training_nsg" {
   name                = "malgazer_training_nsg"
-  location            = "eastus"
+  location            = "${var.region}"
   resource_group_name = "${azurerm_resource_group.malgazer_training_rg.name}"
 
   security_rule {
@@ -55,7 +55,7 @@ resource "azurerm_network_security_group" "malgazer_training_nsg" {
 
 resource "azurerm_network_interface" "malgazer_training_nic" {
     name                      = "malgazer_training_nic"
-    location                  = "eastus"
+    location                  = "${var.region}"
     resource_group_name       = "${azurerm_resource_group.malgazer_training_rg.name}"
     network_security_group_id = "${azurerm_network_security_group.malgazer_training_nsg.id}"
 

@@ -29,3 +29,11 @@ variable "vm_size" {
 variable "home_ip" {
     description = "Home IP range to open"
 }
+
+variable "mount_data_cmd" {
+    description = "The command to mount the training data"
+}
+
+variable "region" {
+    description = "The region to deploy"
+}

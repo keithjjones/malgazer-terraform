@@ -1,6 +1,6 @@
 resource "azurerm_virtual_machine" "malgazer_training_vm" {
     name                  = "malgazer_training_vm"
-    location              = "eastus"
+    location              = "${var.region}"
     resource_group_name   = "${azurerm_resource_group.malgazer_training_rg.name}"
     network_interface_ids = ["${azurerm_network_interface.malgazer_training_nic.id}"]
     vm_size               = "${var.vm_size}"
@@ -27,5 +27,25 @@ resource "azurerm_virtual_machine" "malgazer_training_vm" {
 
     os_profile_linux_config {
         disable_password_authentication = false
+    }
+
+    connection {
+      type     = "ssh"
+      # host     = "${azurerm_public_ip.malgazer_training_public_ip.ip_address}"
+      user     = "${var.vm_username}"
+      password = "${var.vm_password}"
+    }
+
+    provisioner "file" {
+      source      = "scripts/build_training.sh"
+      destination = "/tmp/build_training.sh"
+    }
+
+    provisioner "remote-exec" {
+      inline = [
+        "${var.mount_data_cmd}",
+        "chmod +x /tmp/build_training.sh",
+        "bash /tmp/build_training.sh"
+      ]
     }
 }

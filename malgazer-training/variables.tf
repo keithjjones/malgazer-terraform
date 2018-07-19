@@ -37,3 +37,11 @@ variable "mount_data_cmd" {
 variable "region" {
     description = "The region to deploy"
 }
+
+variable "state_storage_access_key" {
+    description = "The key to access the state info on Azure files."
+}
+
+variable "state_storage_account_name" {
+    description = "The account name for the state info on Azure files."
+}

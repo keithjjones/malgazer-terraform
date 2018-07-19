@@ -29,17 +29,18 @@ resource "azurerm_virtual_machine" "malgazer_training_vm" {
         disable_password_authentication = false
     }
 
-    provisioner "file" {
-      connection {
-        type     = "ssh"
-        agent    = false
-        host     = "${azurerm_public_ip.malgazer_training_public_ip.ip_address}"
-        user     = "${var.vm_username}"
-        password = "${var.vm_password}"
-      }
-      source      = "./scripts/build_training.sh"
-      destination = "/tmp/build_training.sh"
-    }
+    # provisioner "file" {
+    #   connection {
+    #     type     = "ssh"
+    #     agent    = false
+    #     host     = "${azurerm_public_ip.malgazer_training_public_ip.ip_address}"
+    #     user     = "${var.vm_username}"
+    #     password = "${var.vm_password}"
+    #     timeout = "180s"
+    #   }
+    #   source      = "./scripts/build_training.sh"
+    #   destination = "/tmp/build_training.sh"
+    # }
 
     provisioner "remote-exec" {
       connection {
@@ -48,11 +49,10 @@ resource "azurerm_virtual_machine" "malgazer_training_vm" {
         host     = "${azurerm_public_ip.malgazer_training_public_ip.ip_address}"
         user     = "${var.vm_username}"
         password = "${var.vm_password}"
+        timeout = "180s"
       }
       inline = [
-        "${var.mount_data_cmd}",
-        "sudo chmod +x /tmp/build_training.sh",
-        "sudo bash /tmp/build_training.sh"
+        "${var.mount_data_cmd}"
       ]
     }
 }

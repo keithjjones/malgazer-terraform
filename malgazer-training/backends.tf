@@ -1,6 +1,6 @@
 terraform {
   backend "azurerm" {
-    container_name       = "malgazer-training-state"
-    key                  = "malgazer-training.terraform.tfstate"
+    container_name       = "malgazer-state"
+    key                  = "${var.resource_group}.terraform.tfstate"
   }
 }

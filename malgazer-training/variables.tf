@@ -1,3 +1,7 @@
+variable "resource_group" {
+  description = "The resource group"
+}
+
 variable "subscription_id" {
     description = "Azure subscription ID"
 }

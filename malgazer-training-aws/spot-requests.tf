@@ -21,7 +21,7 @@ resource "aws_spot_instance_request" "malgazer_training_vm" {
 
   connection {
     user = "ubuntu"
-    private_key = "${file("mykey")}"
+    private_key = "${file("mykey.cert")}"
     host = "${aws_spot_instance_request.malgazer_training_vm.public_ip}"
   }
 

@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/enable-ec2-spot-hibernation

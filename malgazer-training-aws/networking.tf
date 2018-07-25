@@ -1,13 +1,13 @@
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow all inbound ssh traffic"
-  vpc_id      = "${aws_vpc.main.id}"
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"]
+    # cidr_blocks = ["${var.home_ip}/32"]
   }
 
   egress {
@@ -15,19 +15,6 @@ resource "aws_security_group" "allow_ssh" {
     to_port         = 0
     protocol        = "-1"
     cidr_blocks     = ["0.0.0.0/0"]
-    prefix_list_ids = ["pl-12c4e678"]
-  }
-}
-
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_subnet" "main" {
-  vpc_id     = "${aws_vpc.main.id}"
-  cidr_block = "10.0.1.0/24"
-
-  tags {
-    Name = "Main"
+    # prefix_list_ids = ["pl-12c4e678"]
   }
 }

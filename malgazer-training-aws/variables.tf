@@ -10,9 +10,9 @@ variable "region" {
 
 }
 
-variable "availability_zone" {
-
-}
+# variable "availability_zone" {
+#
+# }
 
 variable "ami" {
 
@@ -27,5 +27,9 @@ variable "spot_price" {
 }
 
 variable "root_ebs_size" {
-  
+
+}
+
+variable "home_ip" {
+
 }

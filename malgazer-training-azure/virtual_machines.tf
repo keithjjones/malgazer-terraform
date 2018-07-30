@@ -3,7 +3,7 @@ resource "azurerm_public_ip" "malgazer_training_public_ip_1" {
     location                     = "${var.region}"
     resource_group_name          = "${var.resource_group}"
     public_ip_address_allocation = "dynamic"
-    domain_name_label = "${var.resource_group}_1"
+    domain_name_label = "${var.resource_group}-1"
 }
 
 resource "azurerm_network_interface" "malgazer_training_nic_1" {

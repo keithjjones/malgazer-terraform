@@ -19,7 +19,7 @@ cd /Source
 git clone https://github.com/keithjjones/malgazer.git
 cd malgazer
 chown -R kjones:kjones /Source
-sudo -u kjones pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Copy the data over...
 # mkdir -p /mnt/data

@@ -24,4 +24,17 @@ resource "aws_spot_instance_request" "malgazer_training_vm" {
     host = "${aws_spot_instance_request.malgazer_training_vm.public_ip}"
   }
 
+  provisioner "file" {
+    source      = "./scripts/build_training.sh"
+    destination = "/tmp/build_training.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mkdir -p /mnt/virustotal",
+      "sudo chown -R ${var.vm_username}:${var.vm_username} /mnt/virustotal",
+      "${var.mount_data_cmd}",
+      "sudo bash /tmp/build_training.sh"
+    ]
+  }
 }

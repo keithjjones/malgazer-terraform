@@ -19,12 +19,10 @@ cd /Source
 git clone https://github.com/keithjjones/malgazer.git
 cd malgazer
 chown -R kjones:kjones /Source
-pip3 install -r requirements.txt
+sudo -u kjones pip3 install -r requirements.txt
 
 # Copy the data over...
-# mkdir -p /mnt/data
-# chown -R kjones:kjones /mnt/data
-# chown -R kjones:kjones /mnt/virustotal
-# cd /mnt/data
-# cp -R /mnt/virustotal/RWE .
-# cp -R /mnt/virustotal/GIST .
+mkdir -p /mnt/data
+chown -R kjones:kjones /mnt/data
+cd /mnt/data
+sudo -u kjones cp -R /mnt/virustotal/RWE /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data

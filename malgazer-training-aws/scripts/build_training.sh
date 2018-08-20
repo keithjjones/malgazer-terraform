@@ -11,7 +11,9 @@ apt-get install -y \
   libhdf5-serial-dev \
   libmagic-dev \
   curl \
-  cifs-utils
+  cifs-utils \
+  tmux \
+  htop
 
 # Get the source code...
 mkdir -p /Source

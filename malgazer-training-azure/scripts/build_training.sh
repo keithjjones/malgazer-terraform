@@ -13,7 +13,8 @@ apt-get install -y \
   curl \
   cifs-utils \
   tmux \
-  htop
+  htop \
+  expect
 
 # Get the source code...
 mkdir -p /Source

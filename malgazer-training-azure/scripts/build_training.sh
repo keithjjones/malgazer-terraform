@@ -20,6 +20,7 @@ mkdir -p /Source
 cd /Source
 git clone https://github.com/keithjjones/malgazer.git
 cd malgazer
+git checkout develop
 chown -R kjones:kjones /Source
 sudo -u kjones pip3 install -r requirements.txt
 

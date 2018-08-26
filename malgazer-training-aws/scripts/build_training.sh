@@ -29,4 +29,4 @@ sudo -u kjones pip3 install -r requirements.txt
 mkdir -p /mnt/data
 chown -R kjones:kjones /mnt/data
 cd /mnt/data
-sudo -u kjones cp -R /mnt/virustotal/RWE /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data
+# sudo -u kjones cp -R /mnt/virustotal/RWE /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data

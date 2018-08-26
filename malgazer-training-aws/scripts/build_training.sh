@@ -30,3 +30,9 @@ mkdir -p /mnt/data
 chown -R kjones:kjones /mnt/data
 cd /mnt/data
 # sudo -u kjones cp -R /mnt/virustotal/RWE /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data
+sudo -u kjones cp -R /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data
+sudo -u kjones mkdir RWE
+sudo -u kjones cp /mnt/virustotal/RWE/rwe_window_256_datapoints_1024.hdf RWE
+# ln -s /mnt/virustotal/RWE RWE
+# ln -s /mnt/virustotal/GIST GIST
+# ln -s /mnt/virustotal/CSV CSV

@@ -65,12 +65,17 @@ resource "azurerm_virtual_machine" "malgazer_training_vm_1" {
       destination = "/tmp/build_training.sh"
     }
 
-    provisioner "remote-exec" {
-      inline = [
-        "sudo mkdir -p /mnt/virustotal",
-        "sudo chown -R ${var.vm_username}:${var.vm_username} /mnt/virustotal",
-        "${var.mount_data_cmd}",
-        "sudo bash /tmp/build_training.sh"
-      ]
+    provisioner "file" {
+      source      = "./scripts/get_training.sh"
+      destination = "/tmp/build_training.sh"
     }
+
+    # provisioner "remote-exec" {
+    #   inline = [
+    #     "sudo mkdir -p /mnt/virustotal",
+    #     "sudo chown -R ${var.vm_username}:${var.vm_username} /mnt/virustotal",
+    #     "${var.mount_data_cmd}",
+    #     "sudo bash /tmp/build_training.sh"
+    #   ]
+    # }
 }

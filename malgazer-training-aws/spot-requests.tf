@@ -31,7 +31,7 @@ resource "aws_spot_instance_request" "malgazer_training_vm" {
 
   provisioner "file" {
     source      = "./scripts/get_training.sh"
-    destination = "/tmp/build_training.sh"
+    destination = "/tmp/get_training.sh"
   }
 
   # provisioner "remote-exec" {

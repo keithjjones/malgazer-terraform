@@ -1,7 +1,7 @@
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#interruption-behavior
 
 resource "aws_spot_instance_request" "malgazer_training_vm" {
-  # availability_zone = "${var.availability_zone}"
+  availability_zone = "${var.availability_zone}"
   ami = "${var.ami}"
   instance_type = "${var.instance_type}"
   user_data = "${file("user-data.txt")}"

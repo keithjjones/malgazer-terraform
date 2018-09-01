@@ -10,9 +10,9 @@ variable "region" {
 
 }
 
-# variable "availability_zone" {
-#
-# }
+variable "availability_zone" {
+
+}
 
 variable "ami" {
 

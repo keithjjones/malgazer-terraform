@@ -4,10 +4,12 @@ resource "aws_spot_instance_request" "malgazer_training_vm" {
   availability_zone = "${var.availability_zone}"
   ami = "${var.ami}"
   instance_type = "${var.instance_type}"
+  instance_interruption_behaviour = "stop"
   user_data = "${file("user-data.txt")}"
   # instance_interruption_behaviour = ""
   associate_public_ip_address = "true"
-  security_groups = ["${aws_security_group.allow_ssh.name}"]
+  # security_groups = ["${aws_security_group.allow_ssh.name}"]
+  vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
   key_name = "${aws_key_pair.training.key_name}"
 
   spot_price = "${var.spot_price}"

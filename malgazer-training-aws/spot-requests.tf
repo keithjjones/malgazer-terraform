@@ -36,6 +36,11 @@ resource "aws_spot_instance_request" "malgazer_training_vm" {
     destination = "/tmp/get_training.sh"
   }
 
+  provisioner "file" {
+    source      = "./scripts/build_gpu.sh"
+    destination = "/tmp/build_gpu.sh"
+  }
+
   # provisioner "remote-exec" {
   #   inline = [
   #     "sudo mkdir -p /mnt/virustotal",

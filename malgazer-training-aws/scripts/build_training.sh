@@ -2,6 +2,7 @@
 
 # Install packages...
 apt-get update
+apt-get upgrade -y
 apt-get install -y python3 python3-pip
 apt-get install -y \
   gcc \
@@ -27,10 +28,14 @@ chown -R ubuntu:ubuntu /Source
 pip3 install -r requirements.txt
 #sudo -u ubuntu pip3 install -r requirements.txt
 
+pip3 uninstall tensorflow
+pip3 install tensorflow-gpu==1.10
+
 # Copy the data over...
 mkdir -p /mnt/data
 chown -R ubuntu:ubuntu /mnt/data
 cd /mnt/data
+
 # sudo -u kjones cp -R /mnt/virustotal/RWE /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data
 # sudo -u kjones cp -R /mnt/virustotal/GIST /mnt/virustotal/CSV /mnt/data
 # sudo -u kjones mkdir RWE

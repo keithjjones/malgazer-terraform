@@ -1,4 +1,8 @@
 cd ~/
+apt-get update
+apt-get upgrade -y
+apt-get install -y gcc
+
 wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
 mv cuda_9.0.176_384.81_linux-run cuda_9.0.176_384.81_linux-run.sh
 sh cuda_9.0.176_384.81_linux-run.sh
@@ -15,6 +19,3 @@ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY
 export CUDA_HOME=/usr/local/cuda
 
 nvcc --version
-
-pip uninstall tensorflow
-pip install tensorflow-gpu==1.10

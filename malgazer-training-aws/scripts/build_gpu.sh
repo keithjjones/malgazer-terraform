@@ -1,6 +1,7 @@
 cd ~/
 apt-get install -y openjdk-8-jdk build-essential swig libcurl3-dev
 
+apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
 curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 dpkg -i ./cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 apt-get update

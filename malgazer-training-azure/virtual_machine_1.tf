@@ -67,7 +67,7 @@ resource "azurerm_virtual_machine" "malgazer_training_vm_1" {
 
     provisioner "file" {
       source      = "./scripts/get_training.sh"
-      destination = "/tmp/build_training.sh"
+      destination = "/tmp/get_training.sh"
     }
 
     # provisioner "remote-exec" {

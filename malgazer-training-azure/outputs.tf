@@ -4,5 +4,6 @@ output "public_ip_address" {
 }
 
 output "public_fqdn" {
+  description = "The FQDN of the resource."
   value = "${azurerm_public_ip.malgazer_training_public_ip_1.fqdn}"
 }
